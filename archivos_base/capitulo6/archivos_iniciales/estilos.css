@@ -1,0 +1,19 @@
+/* estilos principales de la página */
+body{
+    /* color: #ff0000; 
+    font-size: 24px; */
+    font-family: 'Lato', sans-serif;
+}
+/*usando un div para almacenar una imagen*/
+#Imagen_fondo{
+    width: 117px;
+    height: 117px;
+    background-repeat: repeat-x;
+    background-position: 0px 0px;
+    background-image: url(assets/raspberry_shortcake_min.jpg);
+}
+a{
+    color: rgb(140, 4, 4);
+    text-decoration: none;
+    font-weight: 200;
+}

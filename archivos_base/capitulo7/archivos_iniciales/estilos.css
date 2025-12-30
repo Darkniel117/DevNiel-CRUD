@@ -1,0 +1,46 @@
+/* estilos principales de la página */
+body{
+   font-family: 'Lato', sans-serif;
+}
+
+
+nav ul{
+    padding-left: 0px;
+    list-style: none;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #333333;
+}
+a{
+    text-decoration: none;
+    color: #aa0000;
+    font-weight: 700;
+}
+table{
+    border-collapse: collapse;
+}
+table, td, th{
+    border: #c00101 solid;
+    width: 400px;
+    margin: 0 auto;
+}
+tr{
+    border: #f3ebeb solid;
+}
+td{
+    background-color: antiquewhite;
+}
+td.col1, td.col2, td.col3, td.col4{
+    background-color: rgba(23, 114, 150, 0.772);
+    border: #0a0909 solid;
+}
+thead{
+    background-color: darkslategray;
+}
+iframe{
+    border: none;
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+}

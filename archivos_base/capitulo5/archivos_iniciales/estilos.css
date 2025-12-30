@@ -1,0 +1,36 @@
+/* estilos principales de la página */
+body{
+    /* color: #ff0000; 
+    font-size: 24px; */
+    font-family: 'Lato', sans-serif;
+}
+#contenedores{
+    background-color: rgb(161, 166, 165);
+}
+.text_left{
+    display: inline-block;
+    background-color: darkcyan;
+}
+.text_right{
+    display: inline-block;
+    width:auto;
+    background-color: darkolivegreen;
+}
+ul{
+    list-style:circle;
+    padding: 20px;
+}
+#L_2{
+    list-style:upper-roman;
+}
+nav ul{
+    padding: 0px;
+    list-style: none;
+}
+nav ul li a{
+    list-style: none;
+    text-decoration: none;
+}
+nav.horizontal ul li{
+    display: inline-block;
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="img/W-logo01.png">
+<!-- Recursos externos de Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Yellowtail&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="button.css">
+<title>Enciclopedia - DevNiel</title>
+</head>
+<body>
+<div id="inicio"></div>
+<div class="hero">
+    <h1 class="audiowide-regular">Bienvenido</h1>
+</div>
+<header id="header">
+        <nav class="tabs-container">
+            <div class="nav-wrapper">
+                <a href="#inicio" class="logo-link">
+                    <img class="logo" src="img/W-logo01.png" alt="Logo">
+                </a>
+                <button class="hamburger" id="hamburgerBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="nav-links" id="navLinks">
+                    <a href="#Html">HTML</a>
+                    <a href="#Css">CSS</a>
+                    <a href="#JavaScript">JavaScript</a>
+                    <a href="#TypeScript">TypeScript</a>
+                    <a href="#Python">Python</a>
+                </div>
+                
+                <img id="loginImage" class="login" src="img/User_log.png" alt="Login">
+            </div>
+            <div class="overlay" id="overlay"></div> <!-- Overlay para el menú móvil -->   
+        </nav>
+    <!-- LOGIN -->
+<div id="loginForm" class="login-form centered" class="scene">
+    <!-- Decoraciones circulares -->
+    <div class="glow glow-left" aria-hidden="true"></div>
+    <div class="glow glow-right" aria-hidden="true"></div>
+
+    <section class="card" aria-labelledby="login-title">
+    <div class="card-header">
+        <div class="brand-icon" aria-hidden="true">
+        <span class="material-icons-round">lock</span>
+        </div>
+        <h1 id="login-title">Iniciar Sesión</h1>
+        <p class="lead">Bienvenido de nuevo</p>
+    </div>
+
+    <form class="form" action="#" method="post" novalidate>
+        <!-- Usuario -->
+        <div class="field">
+        <div class="label-row">
+            <label for="username" class="label">Usuario</label>
+        </div>
+        <div class="input-group">
+            <span class="icon-left material-icons-round" aria-hidden="true">person</span>
+            <input id="username" name="username" type="text" class="input" placeholder="nombre@ejemplo.com" autocomplete="username">
+        </div>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="field">
+        <div class="label-row">
+            <label for="password" class="label">Contraseña</label>
+        </div>
+        <div class="input-group">
+            <span class="icon-left material-icons-round" aria-hidden="true">vpn_key</span>
+            <input id="password" name="password" type="password" class="input" placeholder="••••••••" autocomplete="current-password">
+            <span class="icon-right material-icons-round" aria-hidden="true">visibility_off</span>
+        </div>
+        </div>
+        <!-- Checkboxes y enlaces -->
+        <div class="field">
+        <div class="row-between">
+            <label class="checkbox-label">
+            <input type="checkbox" id="remember-me" name="remember-me">
+            <span>Recordarme</span>
+            </label>
+            <a href="#" class="link-small">¿Olvidó contraseña?</a>
+        </div>
+
+        <label class="checkbox-label full">
+            <input type="checkbox" id="terms" name="terms">
+            <span>Acepto los <a href="#" class="underline">términos</a></span>
+        </label>
+        </div>
+
+        <!-- Botón principal -->
+        <button type="submit" class="btn-primary">
+        Iniciar Sesión
+        <span class="material-icons-round">arrow_forward</span>
+        </button>
+    </form>
+
+    <!-- Separador "o continuar con" -->
+    <div class="divider-wrap" aria-hidden="true">
+        <div class="divider-line"></div>
+    </div>
+
+    <p class="signup">¿No tienes una cuenta? <a class="link-strong" href="#">Regístrate</a></p>
+    </section>
+</div>
+</header>
+<main>
+    <section id="Html" class="section">
+        <h1>HTML</h1>
+        <p>Learn about HTML</p>
+        <br>
+        <article class="skills"> 
+            <p class=".quantico-bold-italic">Lenguaje de marcado estándar para estructurar contenido en la web: 
+                define encabezados, párrafos, enlaces, formularios y mejora la accesibilidad.</p>
+        </article>
+    </section>
+    <section id="Css" class="section">
+        <h1>CSS</h1>
+        <p>Learn about CSS</p>
+        <article class="skills"> 
+            <p>Lenguaje de estilos que controla la apariencia visual: tipografías, colores, distribución responsiva y animaciones para presentar el contenido.</p>
+        </article>
+    </section>
+    <section id="JavaScript" class="section">
+        <h1>JavaScript</h1>
+        <p>Learn about JavaScript</p>
+        <article class="skills"> 
+            <p>LLenguaje de programación que añade interactividad al navegador (y al servidor): maneja el DOM, eventos y llamadas asíncronas para experiencias dinámicas.</p>
+        </article>
+    </section>
+    <section id="TypeScript" class="section">
+        <h1>TypeScript</h1>
+        <p>Learn about TypeScript</p>
+        <article class="skills"> 
+            <p>Superset de JavaScript con tipado estático opcional; permite detectar errores en compilación y mejorar la mantenibilidad en proyectos grandes.</p>
+        </article>
+    </section>
+    <section id="Python" class="section">
+        <h1>Python</h1>
+        <p>Learn about Python</p>
+        <article class="skills"> 
+            <p>Lenguaje de propósito general, claro y expresivo; popular en back-end web, automatización, ciencia de datos y scripting gracias a su amplio ecosistema.</p>
+        </article>
+    </section>
+</main>
+<hr>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut dixun ex ea commodo consecuencia. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<hr>
+<footer>
+    <p><small>© 2025 Daniel's Web Development. All rights reserved.</small></p>
+</footer>
+<script src="scripts.js" defer></script> <!-- Asegúrate de que el script se cargue después del HTML -->
+</body>
+</html>

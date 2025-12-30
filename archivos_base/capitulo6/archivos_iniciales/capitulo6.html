@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Capítulo 5 - curso HTML</title>
+    
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,100,700' rel='stylesheet' type='text/css'>    
+    <link href="estilos.css" rel="stylesheet" />
+    <link href="assets/icono.ico" rel="icon" /> 
+
+    <script src="main.js" type="text/javascript"></script>
+    <!--Script para uso de icono de fuente-->
+    <script src="https://kit.fontawesome.com/6bb1667a18.js" crossorigin="anonymous"></script>
+</head>
+<body onload="init()">
+    <!-- este es mi primer ejemplo con HTML  -->
+
+    <header>
+        <nav></nav>
+    </header>
+    
+    <aside>
+        <nav></nav>
+    </aside>
+    
+    <section>
+        <h1>Trabajo con textos</h1>
+        <article>
+            <h2>Etiqueta de imagen</h2>
+            <img src="assets/raspberry_shortcake_min.jpg" title="Cake" alt="cake"/>
+        <h2>Imagen de fondo</h2>
+        <div id="Imagen_fondo"></div>
+    </section>
+    
+    <!--Usando etiqueta picture-->
+    <h2>Imagen HTML5</h2>
+    <picture>
+        <source srcset="assets/hz.jpg" media="(min-width:600px)">
+        <source srcset="assets/vert.jpg" media="(min-width:480px)">
+    </picture>
+    
+    <!--Fuentes como iconos-->
+    <h2>Fuentes como iconos</h2>
+    <a href="#">Haz click aqui<i class="fa-solid fa-code"></i></a><br>
+    <a href="#">Haz click aqui<i class="fa fa-bug" aria-hidden="true"></i></a>
+    
+    <!--Mapa de imagenes-->
+    <h2>Mapa de imagenes</h2>
+    <img src="assets/cherries-with-cherry-tea-cake-2.jpg" width="400" usemap="cake"/>
+        <map name="cake">
+            <area alt="bizcocho" title="Bizcocho" href="biz.html" shape="rect" coords="0,0,450,150">
+            <area alt="cereza" title="cereza" href="cer.html" shape="circle" coords="140,200,450,330">
+        </map>
+        </article>
+    <footer>
+    </footer>
+</body>
+</html>
