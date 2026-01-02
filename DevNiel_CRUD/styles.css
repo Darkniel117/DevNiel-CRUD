@@ -94,17 +94,22 @@ p {
     padding: 1rem 1rem; /* Espaciado interno */
     position: sticky; /* Hace que la barra sea sticky */
     margin-top: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    top: 10px; /* Espacio desde la parte superior */
     z-index: 100;
     width: 100%; /* Asegura que ocupe todo el ancho */
     border-radius: 20px 20px 20px 20px;
 }
 
 .nav-wrapper {
-    display: flex; /* Usamos flexbox para alinear los elementos */
+    display: flex; /* Usamos flexbox para distribuir los elementos */
     align-items: center;
     justify-content: space-between; /* Espacio entre elementos */
     max-width: none; /* Cambiado a none para ocupar todo el ancho */
     margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     gap: 1rem; /* Espacio entre elementos */
 }
 
@@ -118,7 +123,7 @@ p {
     height: 60px; /* Ajusta según sea necesario */
     width: auto;
     flex-shrink: 0; /* Evita que el logo se reduzca */
-    filter: invert(50%);
+    /* filter: invert(50%); */
 }
 .logo:hover{
     filter: none;
@@ -134,8 +139,8 @@ p {
 .nav-links {
     display: flex;
     gap: 0.5rem;
-    flex: 1;
-    justify-content: space-around;
+    flex: 0.5; /* Para que los enlaces ocupen un espacio proporcional */ 
+    justify-content: space-around; /* Espacio uniforme entre los enlaces */
 }
 
 /* Estilos de los enlaces */
@@ -143,7 +148,7 @@ p {
     text-decoration: none;
     color: #e8e8e8;
     border: #2AA7A0 2px solid;
-    padding: 0.75rem 2rem;
+    padding: 0.70rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,7 +157,7 @@ p {
     border-radius: 15px;
     white-space: nowrap;
     font-size: 0.95rem;
-    flex: 1; /* Para que los enlaces crezcan uniformemente */
+    flex: 0.5; /* Para que los enlaces crezcan uniformemente */
 }
 
 .nav-links a:hover {
@@ -171,12 +176,12 @@ p {
     background: none;
     border: none;
     cursor: pointer;
-    gap: 6px;
+    gap: 1px;
 }
 
 .hamburger span {
-    width: 25px;
-    height: 3px;
+    width: 15px;
+    height: 1.5px;
     background-color: #2AA7A0;
     transition: all 0.3s ease;
 }
@@ -210,81 +215,169 @@ p {
     display: block;
 }
 
-/* MEDIA QUERY: Tablets (768px) */
-@media (max-width: 768px) { /* Ajustes para tablets */
-    .nav-wrapper {
-        flex-direction: column;   /* apila en tablet */
-        align-items: center;
-        gap: 0.5rem;
-    }
-    .logo-link { order: 1; } /* Logo al inicio */
-    .login     { order: 2; } /* Login en el medio */
-    .hamburger { order: 3; } /* Botón hamburguesa al final */
 
-    .nav-links {
-        order: 4;
-        flex-direction: column;
-        width: 100%; 
-        gap: 0.5rem;
-    }
-    .nav-links a {
+/* MEDIA QUERY: Tablets (768px) */
+@media (max-width: 768px) {
+  /* Contenedor principal del nav */
+  .nav-wrapper {
+    display: flex; /* aseguramos que es flex */
+    flex-direction: row;   /* fila arriba */
+    flex-wrap: wrap;       /* permite que el menú baje a la siguiente línea */
+    align-items: center; /* centra verticalmente los elementos */
+    justify-content: center; /* los iconos tienden a centrarse como grupo */
+    gap: 0.6rem; /* espacio entre elementos */
+  }
+
+  /* Logo y Login juntos en la primera fila */
+  .logo-link { order: 1; }
+  .login     { order: 1; }
+  .logo-link,
+  .login {
+    flex: 0 0 auto;        /* no expanden */
+  }
+
+  /* Tamaños recomendados en tablet (ajústalos si quieres) */
+  .logo {
+    width: 44px; /* ajusta el ancho */
+    height: 44px; /* ajusta la altura */
+  }
+  .login {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;    /* si el avatar es circular */
+  }
+
+  /* Hamburguesa al extremo derecho de la misma fila */
+  .hamburger {
+    order: 2;
+    margin-left: auto;     /* empuja la hamburguesa hacia la derecha */
+    flex: 0 0 auto;
+  }
+
+  /* Menú debajo, en columna, como lo tienes */
+  .nav-links {
+    order: 3;
+    flex: 1 1 100%;        /* ocupa toda la siguiente línea */
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-links a {
     width: 100%;
-    }
-    .tabs-container a {
-        padding: 0.65rem 1.2rem;
-        font-size: 0.9rem;
-    }
+  }
+
+  /* Mantiene tus estilos de tabs en tablet */
+  .tabs-container a {
+    padding: 0.65rem 1.2rem;
+    font-size: 0.9rem;
+  }
 }
+
 
 /* MEDIA QUERY: Móviles (480px) */
 @media (max-width: 480px) {
-    .hamburger {
-        display: flex;
-        order: 3; /* Mueve el botón hamburguesa al final */
-    }
-    
-    .nav-wrapper {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        padding: 0;
-    }
-/* ORDEN EN MÓVILES (NUEVO) */
-    .logo-link{
-        order: 1; /* Mueve el logo al inicio */
-    }
-    .login {
-        order: 2; /* Mueve el login al medio */
-        height: 40px;
-    }
-    .nav-links {
-        order: 4; /* Mueve los links al final */
-        display: none;
-        position: static;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        background-color: #1a1a1a;
-        padding: 1rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
-    
-    .nav-links.active {
-        display: flex;
-    }
-    
-    .tabs-container a {
-        padding: 0.75rem 1rem;
-        font-size: 0.85rem;
-        letter-spacing: 1px;
-    }
-    .nav-links a {
-        flex: none;
-        width: 100%;              /*cada botón ocupa todo el ancho disponible */
-    }
+
+  /* Asegura contexto de posicionamiento para overlay y z-index */
+  .tabs-container {
+    position: relative;
+  }
+
+  /* Fila superior: logo + login + hamburguesa (a la derecha) */
+  .nav-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;          /* el menú baja a la línea siguiente */
+    align-items: center;
+    justify-content: flex-start;  /* centra el grupo de iconos; usa flex-start si los quieres a la izquierda */
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .logo-link { order: 1; }
+  .login     { order: 1; }
+  .logo-link,
+  .login {
+    flex: 0 0 auto;
+  }
+
+  /* Tamaños en móvil (ajústalos a tu gusto) */
+  .logo {
+    width: 36px;
+    height: 36px;
+  }
+  .login {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+
+  /* Hamburguesa al extremo derecho */
+  .hamburger {
+    order: 2;
+    margin-left: auto;
+    flex: 0 0 auto;
+    z-index: 101;             /* por encima del overlay */
+  }
+
+  /* Menú debajo: oculto por defecto en móvil */
+  .nav-links {
+    order: 3;
+    flex: 1 1 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    /* estado cerrado */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
+  }
+
+  /* Estado abierto: cuando el contenedor tiene .nav-open */
+  .tabs-container.nav-open .nav-links {
+    max-height: 700px;        /* suficiente para todas las opciones */
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 0.75rem 1rem;    /* touch-friendly */
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+
+  /* Overlay para cerrar el menú tocando fuera */
+  .overlay {
+    display: none;            /* cerrado por defecto */
+  }
+
+  .tabs-container.nav-open .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(1px);
+    z-index: 100;
+  }
+
+  /* Opcional: separa visualmente la fila superior del menú desplegado */
+  .tabs-container.nav-open .nav-wrapper {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* Mantén tu estilo de tabs en móvil */
+  .tabs-container a {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.95rem;
+  }
 }
+/* =========================Fin estilos barra de navegación====================== */
 
 .sticky {
     position: fixed; /* Fija la barra en la parte superior */
