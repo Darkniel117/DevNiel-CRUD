@@ -12,7 +12,6 @@ window.addEventListener("scroll", function () {
     }
 });
 
-
 document.addEventListener('DOMContentLoaded', function () {
     const loginImage = document.getElementById('loginImage');
     const overlay = document.querySelector('.overlay');
@@ -41,33 +40,32 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+//-- ----------------------------------------------------------------------------
+//-- ------------------------------ MENÚ HAMBURGUESA ------------------------------
+//-- ------------------------------------------------------------------------------
 // Selección de elementos
-const hamburger = document.getElementById('hamburgerBtn');
+const hamburger = document.getElementById('hamburgerBtn'); // Botón de menú hamburguesa
 const navLinks = document.getElementById('navLinks');
 const overlay = document.getElementById('overlay');
+const tabsContainer = document.querySelector('.tabs-container');  // NUEVO
 
 // Abrir/cerrar menú
 hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
-    overlay.classList.toggle('active');
+    tabsContainer.classList.toggle('nav-open');  // CAMBIO: usa .nav-open
 });
 
 // Cerrar menú al hacer clic en un link
 navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-        overlay.classList.remove('active');
+        tabsContainer.classList.remove('nav-open');  // CAMBIO: usa .nav-open
     });
 });
 
 // Cerrar menú al hacer clic en el overlay
 overlay.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navLinks.classList.remove('active');
-    overlay.classList.remove('active');
+    tabsContainer.classList.remove('nav-open');  // CAMBIO: usa .nav-open
 });
+
 
 
 
