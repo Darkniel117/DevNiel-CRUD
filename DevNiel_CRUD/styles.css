@@ -242,18 +242,6 @@ p {
 
 /* MEDIA QUERY: Tablets (768px) */
 @media (max-width: 768px) {
-   /* Asegura contexto de posicionamiento */
-  .tabs-container .nav-wrapper {
-    position: relative; /* Para el overlay si es necesario */
-    padding: 0.1rem 0.1rem; /* Espaciado interno */
-    /*position: sticky; /* Hace que la barra sea sticky */
-    /*margin-top: auto; /* Espacio superior automático */
-    top: 0px; /* Espacio desde la parte superior */
-    z-index: 100; /* Asegura que esté por encima de otros elementos */
-    width: 100%; /* Asegura que ocupe todo el ancho */
-    border-radius: 15px 15px 15px 15px;
-  }
-
   #header {
     margin-top: 0; /* Elimina margen superior */
     height: 0vh; /* Ocupa toda la altura de la ventana */
@@ -261,16 +249,18 @@ p {
     padding-right: 0%;
   }
 
-  .hero .audiowide-regular { 
-    display:none; /* Oculta el título grande en móviles */
-    position:absolute;
-    min-height: 10vh; /* Asegura que ocupe al menos la altura de la ventana */
-    /*display: flex; /* Usamos flexbox para centrar el contenido 
-    justify-content: center;
-    align-items: center;*/
-    
+  /* Contenedor principal del nav */
+  .tabs-container .nav-wrapper {
+    display: flex; /* aseguramos que es flex */
+    position: relative; /* Para el overlay si es necesario */
+    padding: 0.1rem 0.1rem; /* Espaciado interno */
+    top: opx; /* Espacio desde la parte superior */
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    border-radius: 15px 15px 15px 15px;
+    flex-wrap: wrap; /* permite que el menú baje a la siguiente línea */
   }
-  
+
   /* Fila superior: logo + login + hamburguesa (a la derecha) */
   .nav-wrapper {
     display: flex;
@@ -280,6 +270,13 @@ p {
     gap: 0.5rem;
     padding: 0.75rem 1rem;
   }
+
+  .nav-links a {
+    width: 80%;
+    padding: 0.5rem;
+    font-size: 0.5rem;
+  }
+
   .nav-links a:hover {
     background-color: #2AA7A0;
     color: #070707;
@@ -295,6 +292,7 @@ p {
     order: 2;
     flex: 0 0 auto; /* no expande */
   }
+
 
   /* Hamburguesa al extremo derecho */
   .hamburger {
@@ -330,15 +328,24 @@ p {
     transform: rotate(-45deg) translate(7px, -7px); /* Ajusta la traslación según sea necesario */
   }
 
+  .hero .audiowide-regular { 
+    display:none; /* Oculta el título grande en móviles */
+    position:absolute;
+    min-height: 10vh; /* Asegura que ocupe al menos la altura de la ventana */
+    /*display: flex; /* Usamos flexbox para centrar el contenido 
+    justify-content: center;
+    align-items: center;*/
+  }
+
   /* Menú debajo: oculto por defecto */
   .nav-links {
     order: 4;
     width: 80%;
     align-items: center;
-    flex-direction: column;
-    gap: 0.5rem;
+    flex-direction: row;
+    gap: 0.5rem; /* Espacio entre enlaces */
     /*margin-top: 1rem;
-    /*padding: 1rem;*/
+    padding: 1rem;*/
     background: rgba(26, 26, 26, 0.95);
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -358,28 +365,56 @@ p {
     pointer-events: auto;
   }
 
-  .nav-links a {
-    width: 80%;
-    padding: 0.5rem;
-    font-size: 0.5rem;
-  }
-
-  /* Tamaños iconos */
+  /* Tamaños recomendados en tablet (ajústalos si quieres) */
   .logo {
-    width: 40px;
-    height: 40px;
+    width: 44px; /* ajusta el ancho */
+    height: 44px; /* ajusta la altura */
   }
   .login {
-    width: 40px;
-    height: 40px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;    /* si el avatar es circular */
   }
-  footer p {
-    font-size: clamp(1rem, 3vw, 2em); /* Tamaño de fuente responsivo */
+
+  /* Hamburguesa al extremo derecho de la misma fila */
+  .hamburger {
+    order: 3;
+    margin-left: auto;     /* empuja la hamburguesa hacia la derecha */
+    flex: 0 0 auto;
+  }
+
+  /* Menú debajo, en columna, como lo tienes */
+  .nav-links {
+    order: 3;
+    flex: 1 1 80%;        /* ocupa toda la siguiente línea */
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .nav-links a {
+    width: 100%;
+  }
+
+  /* Mantiene tus estilos de tabs en tablet */
+  .tabs-container a {
+    padding: 0.65rem 1.2rem;
+    font-size: 0.9rem;
+    margin-top: 0rem;
   }
 }
 
+
 /* MEDIA QUERY: Móviles (480px) */
 @media (max-width: 480px) {
+   #header {
+    margin-top: 0; /* Elimina margen superior */
+    height: 0vh; /* Ocupa toda la altura de la ventana */
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+  
   /* Asegura contexto de posicionamiento */
   .tabs-container .nav-wrapper {
     position: relative; /* Para el overlay si es necesario */
@@ -392,23 +427,6 @@ p {
     border-radius: 15px 15px 15px 15px;
   }
 
-  #header {
-    margin-top: 0; /* Elimina margen superior */
-    height: 0vh; /* Ocupa toda la altura de la ventana */
-    padding-left: 0%;
-    padding-right: 0%;
-  }
-
-  .hero .audiowide-regular { 
-    display:none; /* Oculta el título grande en móviles */
-    position:absolute;
-    min-height: 10vh; /* Asegura que ocupe al menos la altura de la ventana */
-    /*display: flex; /* Usamos flexbox para centrar el contenido 
-    justify-content: center;
-    align-items: center;*/
-    
-  }
-  
   /* Fila superior: logo + login + hamburguesa (a la derecha) */
   .nav-wrapper {
     display: flex;
@@ -418,13 +436,20 @@ p {
     gap: 0.5rem;
     padding: 0.75rem 1rem;
   }
+
+  .nav-links a {
+    width: 80%;
+    padding: 0.5rem;
+    font-size: 0.5rem;
+  }
+
   .nav-links a:hover {
     background-color: #2AA7A0;
     color: #070707;
     border-radius: 25px;
 }
 
-  /* Logo y login: juntos a la izquierda */
+/* Logo y login: juntos a la izquierda */
   .logo-link {
     order: 1;
     flex: 0 0 auto;
@@ -468,6 +493,15 @@ p {
     transform: rotate(-45deg) translate(7px, -7px); /* Ajusta la traslación según sea necesario */
   }
 
+  .hero .audiowide-regular { 
+    display:none; /* Oculta el título grande en móviles */
+    position:absolute;
+    min-height: 10vh; /* Asegura que ocupe al menos la altura de la ventana */
+    /*display: flex; /* Usamos flexbox para centrar el contenido 
+    justify-content: center;
+    align-items: center;*/
+  }
+
   /* Menú debajo: oculto por defecto */
   .nav-links {
     order: 4;
@@ -494,12 +528,6 @@ p {
     max-height: 350px;  
     opacity: 1;
     pointer-events: auto;
-  }
-
-  .nav-links a {
-    width: 80%;
-    padding: 0.5rem;
-    font-size: 0.5rem;
   }
 
   /* Overlay 
