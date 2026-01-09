@@ -757,9 +757,49 @@ transition: transform .06s ease, box-shadow .12s ease, opacity .12s ease;
 
 /* Responsive */
 @media (max-width: 480px) {
-.card { padding: 20px; border-radius: 14px; }
-.scene { max-width: 360px; }
-.brand-icon { width:44px; height:44px; }
+.card { padding: 20px; border-radius: 14px; } /* Menor padding en móvil */
+.scene { max-width: 360px; } /* Menor ancho en móvil */
+.brand-icon { width:44px; height:44px; } /* Icono más pequeño */
 }
 
+#Html{
+  position: sticky;
+  background-color: #deba0a;
+  background-size: cover; /* Asegura que la imagen de fondo cubra todo el área */
+  background-attachment:fixed; /* Fija la imagen de fondo al hacer scroll */
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
 
+#Css {
+  position: sticky;
+  background-color: #0954b7;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+#JavaScript {
+  position: sticky;
+  background-color: #f0db4f;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+#TypeScript {
+  position: sticky;
+  background-color: #3178c6;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+#Python {
+  position: sticky;
+  background-color: #306998;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
