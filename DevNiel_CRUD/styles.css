@@ -44,10 +44,12 @@ body {
 }
 
 .hero {
-    min-height: 60vh; /* Asegura que ocupe al menos la altura de la ventana */
-    display: flex; /* Usamos flexbox para centrar el contenido */
-    justify-content: center;
-    align-items: center;
+  display: flex; /* Usamos flexbox para centrar el contenido */
+  /*position: sticky;
+  top: 0px;*/
+  min-height: 19rem; /* Asegura que ocupe al menos la altura de la ventana */
+  justify-content: center; /* Centramos verticalmente */
+  align-items: center; /* Centramos horizontalmente */
 }
 
 .audiowide-regular {
@@ -116,6 +118,10 @@ p {
     font-size: 18px;
     letter-spacing: 5px;
 }
+
+h1 {
+  color: var(--accent) ;
+}
 /* =========================Estilos para la barra de navegación====================== */
 
 /* Estilos base del contenedor */
@@ -129,7 +135,7 @@ p {
     top: 0px; /* Espacio desde la parte superior */
     z-index: 100;
     width: 100%; /* Asegura que ocupe todo el ancho */
-    border-radius: 15px 15px 15px 15px;
+    border-radius: 5px 5px 5px 5px;
 }
 
 .nav-wrapper {
@@ -340,6 +346,11 @@ p {
     align-items: center;*/
   }
 
+  #hero {
+    /*background-color: #2AA7A0;*/
+    min-height: 3.3rem; /* Oculta el contenedor hero en tablets */
+  }
+
   /* Menú debajo: oculto por defecto */
   .nav-links {
     order: 4;
@@ -491,12 +502,19 @@ p {
   }
 
   .hero .audiowide-regular { 
+    /*position:absolute;*/
+    position: sticky;
+    top: 0px;
     display:none; /* Oculta el título grande en móviles */
-    position:absolute;
-    min-height: 10vh; /* Asegura que ocupe al menos la altura de la ventana */
+    /*min-height: 0vh; /* Asegura que ocupe al menos la altura de la ventana */
     /*display: flex; /* Usamos flexbox para centrar el contenido 
     justify-content: center;
     align-items: center;*/
+  }
+
+  #hero {
+    /*background-color: #2AA7A0;*/
+    min-height: 2.8rem; /* Oculta el contenedor hero en tablets */
   }
 
   /* Menú debajo: oculto por defecto */
@@ -608,7 +626,7 @@ small{
     max-width: 600px;
     text-align: justify;
     padding: 0 20px;
-    color: #2AA7A0;
+    color: #030303;
 }
 
 /* ============================
