@@ -33,7 +33,8 @@ body {
 }
 
 #header {
-    height: 40vh; /* Ocupa toda la altura de la ventana */
+    margin-top: 0; /* Elimina margen superior */
+    height: 0rem; /* Ocupa toda la altura de la ventana */
     display: flex; /* Usamos flexbox para centrar el contenido */
     flex-direction: column; /* Alineamos los elementos en columna */
     justify-content: center; /* Centramos verticalmente */
@@ -45,9 +46,8 @@ body {
 
 .hero {
   display: flex; /* Usamos flexbox para centrar el contenido */
-  /*position: sticky;
-  top: 0px;*/
-  min-height: 19rem; /* Asegura que ocupe al menos la altura de la ventana */
+  top: 0px;
+  padding-top: 5%;
   justify-content: center; /* Centramos verticalmente */
   align-items: center; /* Centramos horizontalmente */
 }
@@ -253,17 +253,18 @@ h1 {
 @media (max-width: 768px) {
   #header {
     margin-top: 0; /* Elimina margen superior */
-    height: 0vh; /* Ocupa toda la altura de la ventana */
+    height: 6rem; /* Ocupa toda la altura de la ventana */
+    padding-top: 0%;
     padding-left: 0%;
     padding-right: 0%;
+    padding-bottom: 0%; /* Elimina padding inferior */ 
   }
 
   /* Contenedor principal del nav */
   .tabs-container .nav-wrapper {
-    display: flex; /* aseguramos que es flex */
     position: relative; /* Para el overlay si es necesario */
     padding: 0.1rem 0.1rem; /* Espaciado interno */
-    top: opx; /* Espacio desde la parte superior */
+    top: 0px; /* Espacio desde la parte superior */
     z-index: 100; /* Asegura que esté por encima de otros elementos */
     width: 100%; /* Asegura que ocupe todo el ancho */
     border-radius: 15px 15px 15px 15px;
@@ -302,7 +303,6 @@ h1 {
     flex: 0 0 auto; /* no expande */
   }
 
-
   /* Hamburguesa al extremo derecho */
   .hamburger {
     order: 3;
@@ -338,16 +338,22 @@ h1 {
   }
 
   .hero .audiowide-regular { 
-    display:none; /* Oculta el título grande en móviles */
+    display: flex; /* Oculta el título grande en móviles */
     position:absolute;
-    min-height: 10vh; /* Asegura que ocupe al menos la altura de la ventana */
-    /*display: flex; /* Usamos flexbox para centrar el contenido 
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Ajuste para centrar exactamente */
     justify-content: center;
-    align-items: center;*/
+    align-items: center;
+    /*min-height: 0vh; /* Asegura que ocupe al menos la altura de la ventana */
   }
 
   #hero {
     /*background-color: #2AA7A0;*/
+    padding-top: 20%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 100%;
     min-height: 3.3rem; /* Oculta el contenedor hero en tablets */
   }
 
@@ -385,9 +391,12 @@ h1 {
     height: 44px; /* ajusta la altura */
   }
   .login {
-    width: 56px;
-    height: 56px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;    /* si el avatar es circular */
+  }
+  footer p {
+    font-size: clamp(1rem, 3vw, 2em); /* Tamaño de fuente responsivo */
   }
 
 
@@ -417,10 +426,12 @@ h1 {
 /* MEDIA QUERY: Móviles (480px) */
 @media (max-width: 480px) {
    #header {
-    margin-top: 0; /* Elimina margen superior */
-    height: 0vh; /* Ocupa toda la altura de la ventana */
+    margin-top: 0%; /* Elimina margen superior */
+    height: 6rem; /* Ocupa toda la altura de la ventana */
+    padding-top: 0%;
     padding-left: 0%;
     padding-right: 0%;
+    padding-bottom: 0%; /* Elimina padding inferior */
   }
   
   /* Asegura contexto de posicionamiento */
@@ -503,18 +514,23 @@ h1 {
 
   .hero .audiowide-regular { 
     /*position:absolute;*/
-    position: sticky;
-    top: 0px;
-    display:none; /* Oculta el título grande en móviles */
-    /*min-height: 0vh; /* Asegura que ocupe al menos la altura de la ventana */
-    /*display: flex; /* Usamos flexbox para centrar el contenido 
+    display:flex; /* Oculta el título grande en móviles */
+    position: absolute;
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Ajuste para centrar exactamente */
     justify-content: center;
-    align-items: center;*/
+    align-items: center;
+    /*min-height: 0vh; /* Asegura que ocupe al menos la altura de la ventana */
   }
 
   #hero {
     /*background-color: #2AA7A0;*/
-    min-height: 2.8rem; /* Oculta el contenedor hero en tablets */
+    padding-top: 20%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 100%;
+    min-height: 5rem; /* Oculta el contenedor hero en tablets */
   }
 
   /* Menú debajo: oculto por defecto */
@@ -543,19 +559,6 @@ h1 {
     max-height: 350px;  
     opacity: 1;
     pointer-events: auto;
-  }
-
-  /* Overlay 
-  .overlay {
-    display: none;
-  }
-
-  .tabs-container.nav-open .overlay {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 99;
   }
 
   /* Tamaños iconos */
