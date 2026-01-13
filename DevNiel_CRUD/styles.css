@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 
 :root { /* Variables CSS para colores y estilos reutilizables */
+    --header-h-desktop: 50px; /* ej.: 64-80px es común */
     --bg1: #174143;
     --bg2: #080808;
     --accent: #2AA7A0;
@@ -28,26 +29,26 @@ body {
     border-radius: 15px;
     border-width: 2px;
     min-height: 100vh;
-    /*display: flex;
-    flex-direction: column; */
+    margin: 0;
 }
 
 #header {
     margin-top: 0; /* Elimina margen superior */
-    height: 0rem; /* Ocupa toda la altura de la ventana */
+    height: 5rem; /* Ocupa toda la altura de la ventana */
     display: flex; /* Usamos flexbox para centrar el contenido */
     flex-direction: column; /* Alineamos los elementos en columna */
     justify-content: center; /* Centramos verticalmente */
     align-items: center; /* Centramos horizontalmente */
     padding-inline: 0em; /* Espaciado horizontal */
-    position: relative; /* Para posicionar elementos hijos si es necesario */
+    /*position: relative; /* Para posicionar elementos hijos si es necesario */
     text-align: center; /* Centrar el texto */
 }
 
 .hero {
   display: flex; /* Usamos flexbox para centrar el contenido */
   top: 0px;
-  padding-top: 5%;
+  padding-top: 15%;
+  padding-bottom: 20%;
   justify-content: center; /* Centramos verticalmente */
   align-items: center; /* Centramos horizontalmente */
 }
@@ -421,7 +422,6 @@ h1 {
     margin-top: 0rem;
   }
 }
-
 
 /* MEDIA QUERY: Móviles (480px) */
 @media (max-width: 480px) {
