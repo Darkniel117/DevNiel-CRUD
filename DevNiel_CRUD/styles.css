@@ -46,6 +46,7 @@ body {
 
 .hero {
   display: flex; /* Usamos flexbox para centrar el contenido */
+  height: 100%; /* Ocupa toda la altura de la ventana */
   top: 0px;
   padding-top: 15%;
   padding-bottom: 20%;
@@ -54,6 +55,7 @@ body {
 }
 
 .audiowide-regular {
+    height: 100%;
     position: relative; /* Para permitir posicionamiento relativo si es necesario */
     display: inline-block;      /* El recuadro se ajusta al texto */
     font-family: "Audiowide", sans-serif;
