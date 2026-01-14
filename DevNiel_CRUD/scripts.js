@@ -41,6 +41,84 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //-- ----------------------------------------------------------------------------
+//-- ------------------------------ FORMULARIO LOGIN MODAL ------------------------------
+//-- ------------------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', () => {
+  const trigger  = document.getElementById('loginImage');       // icono de perfil
+  const modal    = document.getElementById('loginForm');         // contenedor modal
+  const overlay  = document.getElementById('overlay') || document.querySelector('.overlay');
+  const panel    = modal?.querySelector('.card');                // panel interno
+
+  if (!trigger || !modal || !overlay || !panel) return;
+
+  let lastFocus = null;
+  let openedAt = 0; // guard temporal para evitar cerrar por el mismo clic de apertura
+
+  function openLogin() {
+    lastFocus = document.activeElement;
+    overlay.hidden = false;
+    modal.hidden   = false;
+    document.body.classList.add('modal-open');
+    trigger.setAttribute('aria-expanded', 'true');
+    openedAt = performance.now();
+
+    // foco inicial
+    const first = modal.querySelector('input, button, a, select, textarea, [tabindex]:not([tabindex="-1"])');
+    requestAnimationFrame(() => (first || panel).focus());
+
+    // registrar fuera en el siguiente tick para no capturar el clic que abrió
+    setTimeout(() => {
+      document.addEventListener('pointerdown', onPointerDown, true);
+      document.addEventListener('keydown', onKeyDown);
+    }, 0);
+  }
+
+  function closeLogin() {
+    overlay.hidden = true;
+    modal.hidden   = true;
+    document.body.classList.remove('modal-open');
+    trigger.setAttribute('aria-expanded', 'false');
+    document.removeEventListener('pointerdown', onPointerDown, true);
+    document.removeEventListener('keydown', onKeyDown);
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  function onPointerDown(e) {
+    // ignora eventos ocurridos inmediatamente después de abrir (misma interacción)
+    if (performance.now() - openedAt < 50) return;
+    // clic en el overlay → cerrar
+    if (e.target === overlay) return closeLogin();
+    // clic fuera del panel → cerrar
+    if (!panel.contains(e.target)) return closeLogin();
+  }
+
+  function onKeyDown(e) {
+    if (e.key === 'Escape') { e.preventDefault(); closeLogin(); }
+    // bloqueo de tabulación fuera del modal (opcional)
+    if (e.key === 'Tab' && !modal.hidden) {
+      const sel = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+      const list = Array.from(modal.querySelectorAll(sel)).filter(el => el.offsetParent !== null);
+      if (!list.length) return;
+      const first = list[0], last = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  }
+
+  // Abrir (y evita que el mismo clic burbujee y cierre)
+  trigger.addEventListener('click', (e) => {
+    e.preventDefault();     // por si el trigger es <a href="#">
+    e.stopPropagation();    // evita que burbujee al document
+    modal.hidden ? openLogin() : closeLogin();
+  });
+
+  // Cerrar tocando el overlay (redundante pero claro)
+  overlay.addEventListener('click', () => { if (!modal.hidden) closeLogin(); });
+});
+
+
+//-- ----------------------------------------------------------------------------
 //-- ------------------------------ MENÚ HAMBURGUESA ------------------------------
 //-- ------------------------------------------------------------------------------
 // Selección de elementos
