@@ -10,7 +10,7 @@
     --card-bg: #121922;
     --border: rgba(7, 7, 7, 0.6);
 }
-[hidden] { display: none !important; }
+
 *,
 *::before, /* Para incluir los pseudo-elementos */
 *::after {
@@ -18,6 +18,9 @@
     padding: 0;
     box-sizing: border-box; /* Incluye el padding y border en el tamaño total */
 }
+
+[hidden] { display: none !important; }
+
 html {
     scroll-behavior: smooth; /* Suaviza el scroll al navegar por anclas */
 }
@@ -92,23 +95,24 @@ body {
 
 /* Contenedor del login (modal) */
 .login-form {
-  position: fixed;
+  position: fixed;      /* Fijo en la pantalla */
   inset: 0;                 /* ocupa toda la pantalla */
   display: grid;            /* centrado simple */
   place-items: center;      /* centra la tarjeta */
-  padding: 16px;
+  align-content: center;/* centra verticalmente */
+  padding: 30px; /* Espacio interno */
   box-sizing: border-box;
   z-index: 10010;           /* por encima del overlay */
-  opacity: 0; transform: scale(.98); 
-  transition: opacity .18s ease, transform .18s ease;
+  opacity: 0; transform: scale(.98); /* Oculto por defecto */
+  transition: opacity .18s ease, transform .18s ease; /* Suaviza la aparición */
 }
 
-.login-form:not([hidden]) { opacity: 1; transform: scale(1); }
+.login-form:not([hidden]) { opacity: 4; transform: scale(1); } /* Muestra el login cuando no está oculto */
 
 /* Overlay consolidado (usa inset para mayor brevedad) */
 .overlay {
   position: fixed;
-  inset: 0;
+  inset: 1;
   background-color: rgba(15,16,17,0.7);
   z-index: 10000; /* Debajo del login-form */
 }
@@ -119,6 +123,178 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+/* ============================
+CSS para el login (HTML + CSS)
+============================ */
+
+/* Visually-hidden (para input checkbox oculto) */
+.visually-hidden {
+position: absolute !important;
+height: 1px; width: 1px;
+overflow: hidden;
+clip: rect(1px, 1px, 1px, 1px);
+white-space: nowrap;
+border: 0; padding: 0; margin: -1px;
+}
+
+/* Escena y decoraciones */
+.scene {
+width: 100%;
+max-width: 500px;
+position: relative;
+margin: 0px;
+}
+
+/* Tarjeta principal */
+.card {
+pointer-events: auto; /* Permite interacción */  
+position: relative;
+background:#121922;
+color: rgb(252, 250, 250);
+border-radius: 18px;
+padding: 32px;
+box-shadow: var(--card-shadow);
+border: 1px solid var(--border);
+overflow: hidden;
+}
+
+/* Encabezado */
+.card-header {
+text-align: center;
+margin-bottom: 18px;
+}
+.brand-icon {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 48px; height: 48px;
+border-radius: 12px;
+background: rgba(1,135,144,0.07);
+color:#2AA7A0; 
+margin: 0 auto 10px;
+}
+.brand-icon .material-icons-round { font-size: 24px; }
+
+.card-header h1 {
+margin: 0;
+font-size: 1.6rem;
+font-weight: 700;
+color: var(--text);
+letter-spacing: -0.02em;
+}
+.lead {
+margin: 8px 0 0;
+font-size: 0.9rem;
+color: var(--muted);
+}
+
+/* Botón cerrar en la esquina del panel */
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 36px;
+  width: 36px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #93a4af;
+  font-size: 18px;
+  cursor: pointer;
+}
+.modal__close:hover { background: rgba(255,255,255,0.06); color: #cfe4ee; }
+
+/* Bloquea scroll del fondo cuando el modal está abierto */
+body.modal-open { overflow: hidden; }
+
+/* Formulario */
+.form { margin-top: 6px; } /* Espacio superior */
+.field { margin-bottom: 14px; } /* Espacio entre campos */
+
+/* Labels */
+.label { display:block; font-size: .68rem; font-weight:600; color:#2AA7A0; letter-spacing: .08em; margin-bottom: 8px; text-transform: uppercase; }
+.label-row { display:flex; justify-content:space-between; align-items:center; }
+.small-label { margin:0 0 8px; font-size: .78rem; color:var(--muted); }
+
+/* Grupo de input con icono */
+.input-group { position: relative; }
+.icon-left {
+position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+font-size: 18px; color: rgba(7, 7, 7, 0.863);
+}
+/* Icono de vista de contraseña */
+.icon-right {
+position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+font-size: 18px; color: rgba(5, 5, 5, 0.932);
+}
+
+/* Inputs */
+.input {
+width: 100%;
+padding: 12px 12px 12px 42px;
+border-radius: 12px;
+border: 1px solid var(--border);
+background: linear-gradient(180deg, #2AA7A0);
+font-size: 0.95rem;
+color:#f4f5f7;
+outline: none;
+transition: box-shadow .15s ease, border-color .15s ease, transform .06s ease;
+}
+.input::placeholder { color: #060707; }
+
+/* Focus del input */
+.input:focus {
+box-shadow: 0 6px 18px -8px rgba(2,132,199,0.16);
+border-color: #000000;
+transform: translateY(0);
+}
+
+/* Row con espacio entre elementos */
+.row-between { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+
+/* Checkboxes simples (dejar controles nativos para accesibilidad) */
+.checkbox-label {
+display:flex; align-items:center; gap:8px; font-size:.95rem; color:var(--muted);
+}
+.checkbox-label.full { margin-top:10px; }
+
+/* Links */
+.link-small { color: var(--primary); text-decoration:none; font-size:.9rem; font-weight:600; }
+.link-small:hover { color: var(--primary-dark); text-decoration: underline; }
+.underline { text-decoration: underline; text-decoration-color: rgba(148,163,184,0.35); }
+
+/* Botón principal */
+.btn-primary {
+width: 100%;
+display:inline-flex; align-items:center; justify-content:center; gap:10px;
+padding: 12px 14px;
+border-radius: 15px;
+border: 10px;
+background:#2AA7A0;
+color: rgb(5, 5, 5);
+font-weight: 700;
+font-size: 0.95rem;
+cursor: pointer;
+box-shadow: 0 15px 15px -15px rgba(255, 255, 255, 0.712);
+transition: transform .06s ease, box-shadow .12s ease, opacity .12s ease;
+}
+.btn-primary:active { transform: scale(.99); }
+.btn-primary .material-icons-round { font-size: 18px; }
+
+/* Pie con registro */
+.signup { margin-top: 12px; text-align:center; color:var(--muted); font-size:.90rem; }
+.link-strong { color: var(--primary); font-weight:700; text-decoration:none; }
+.link-strong:hover { color: var(--primary-dark); text-decoration: underline; }
+
+
+/* Responsive */
+@media (max-width: 480px) {
+.card { padding: 20px; border-radius: 14px; } /* Menor padding en móvil */
+.scene { max-width: 56                                   px; } /* Menor ancho en móvil */
+.brand-icon { width:44px; height:44px; } /* Icono más pequeño */
+}
+/* =========================Fin CSS para el login (HTML + CSS)====================== */
 
 p {
     font-size: 18px;
@@ -635,177 +811,6 @@ small{
     text-align: justify;
     padding: 0 20px;
     color: #030303;
-}
-
-/* ============================
-CSS para el login (HTML + CSS)
-============================ */
-
-/* Visually-hidden (para input checkbox oculto) */
-.visually-hidden {
-position: absolute !important;
-height: 1px; width: 1px;
-overflow: hidden;
-clip: rect(1px, 1px, 1px, 1px);
-white-space: nowrap;
-border: 0; padding: 0; margin: -1px;
-}
-
-/* Escena y decoraciones */
-.scene {
-width: 100%;
-max-width: 560px;
-position: relative;
-margin: 0px;
-}
-
-/* Tarjeta principal */
-.card {
-pointer-events: auto;  
-position: relative;
-background:#121922;
-color: rgb(252, 250, 250);
-border-radius: 18px;
-padding: 32px;
-box-shadow: var(--card-shadow);
-border: 1px solid var(--border);
-overflow: hidden;
-}
-
-/* Encabezado */
-.card-header {
-text-align: center;
-margin-bottom: 18px;
-}
-.brand-icon {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-width: 48px; height: 48px;
-border-radius: 12px;
-background: rgba(1,135,144,0.07);
-color:#2AA7A0; 
-margin: 0 auto 10px;
-}
-.brand-icon .material-icons-round { font-size: 24px; }
-
-.card-header h1 {
-margin: 0;
-font-size: 1.6rem;
-font-weight: 700;
-color: var(--text);
-letter-spacing: -0.02em;
-}
-.lead {
-margin: 8px 0 0;
-font-size: 0.9rem;
-color: var(--muted);
-}
-
-/* Botón cerrar en la esquina del panel */
-.modal__close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  height: 36px;
-  width: 36px;
-  border: 0;
-  border-radius: 8px;
-  background: transparent;
-  color: #93a4af;
-  font-size: 18px;
-  cursor: pointer;
-}
-.modal__close:hover { background: rgba(255,255,255,0.06); color: #cfe4ee; }
-
-/* Bloquea scroll del fondo cuando el modal está abierto */
-body.modal-open { overflow: hidden; }
-
-/* Formulario */
-.form { margin-top: 6px; }
-.field { margin-bottom: 14px; }
-
-/* Labels */
-.label { display:block; font-size: .68rem; font-weight:600; color:#2AA7A0; letter-spacing: .08em; margin-bottom: 8px; text-transform: uppercase; }
-.label-row { display:flex; justify-content:space-between; align-items:center; }
-.small-label { margin:0 0 8px; font-size: .78rem; color:var(--muted); }
-
-/* Grupo de input con icono */
-.input-group { position: relative; }
-.icon-left {
-position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
-font-size: 18px; color: rgba(7, 7, 7, 0.863);
-}
-/* Icono de vista de contraseña */
-.icon-right {
-position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-font-size: 18px; color: rgba(5, 5, 5, 0.932);
-}
-
-/* Inputs */
-.input {
-width: 100%;
-padding: 12px 12px 12px 42px;
-border-radius: 12px;
-border: 1px solid var(--border);
-background: linear-gradient(180deg, #2AA7A0);
-font-size: 0.95rem;
-color:#f4f5f7;
-outline: none;
-transition: box-shadow .15s ease, border-color .15s ease, transform .06s ease;
-}
-.input::placeholder { color: #060707; }
-
-/* Focus del input */
-.input:focus {
-box-shadow: 0 6px 18px -8px rgba(2,132,199,0.16);
-border-color: #000000;
-transform: translateY(0);
-}
-
-/* Row con espacio entre elementos */
-.row-between { display:flex; justify-content:space-between; align-items:center; gap:12px; }
-
-/* Checkboxes simples (dejar controles nativos para accesibilidad) */
-.checkbox-label {
-display:flex; align-items:center; gap:8px; font-size:.95rem; color:var(--muted);
-}
-.checkbox-label.full { margin-top:10px; }
-
-/* Links */
-.link-small { color: var(--primary); text-decoration:none; font-size:.9rem; font-weight:600; }
-.link-small:hover { color: var(--primary-dark); text-decoration: underline; }
-.underline { text-decoration: underline; text-decoration-color: rgba(148,163,184,0.35); }
-
-/* Botón principal */
-.btn-primary {
-width: 100%;
-display:inline-flex; align-items:center; justify-content:center; gap:10px;
-padding: 12px 14px;
-border-radius: 15px;
-border: 10px;
-background:#2AA7A0;
-color: rgb(5, 5, 5);
-font-weight: 700;
-font-size: 0.95rem;
-cursor: pointer;
-box-shadow: 0 15px 15px -15px rgba(255, 255, 255, 0.712);
-transition: transform .06s ease, box-shadow .12s ease, opacity .12s ease;
-}
-.btn-primary:active { transform: scale(.99); }
-.btn-primary .material-icons-round { font-size: 18px; }
-
-/* Pie con registro */
-.signup { margin-top: 12px; text-align:center; color:var(--muted); font-size:.90rem; }
-.link-strong { color: var(--primary); font-weight:700; text-decoration:none; }
-.link-strong:hover { color: var(--primary-dark); text-decoration: underline; }
-
-
-/* Responsive */
-@media (max-width: 480px) {
-.card { padding: 20px; border-radius: 14px; } /* Menor padding en móvil */
-.scene { max-width: 56                                   px; } /* Menor ancho en móvil */
-.brand-icon { width:44px; height:44px; } /* Icono más pequeño */
 }
 
 #Html{
