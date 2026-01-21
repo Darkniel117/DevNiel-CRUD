@@ -19,11 +19,12 @@
     box-sizing: border-box; /* Incluye el padding y border en el tamaño total */
 }
 
-[hidden] { display: none !important; }
 
 html {
     scroll-behavior: smooth; /* Suaviza el scroll al navegar por anclas */
 }
+
+[hidden] { display: none !important; }
 
 body {
     font-family: sans-serif;
@@ -123,6 +124,47 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+/* ============================Estilos para la barra de búsqueda====================== */
+.search-container {
+  position: relative; /* Para posicionar el icono dentro */
+  flex: 1;
+  max-width: 200px;
+  margin-left: 1rem;
+}
+
+.search-icon {
+  position: absolute; /* Posiciona el icono dentro del contenedor */
+  right: 12px; /* A la derecha */
+  top: 50%; /* Centrado vertical */
+  transform: translateY(-50%); /* Ajuste para centrar exactamente */
+  pointer-events: none; /* Permite hacer clic a través del icono */
+  color: #e8e8e8; /* Color del icono */
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 45px 10px 15px;
+  border: 2px solid #2AA7A0;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.1);
+  color: #e8e8e8;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  background: rgba(255,255,255,0.2);
+  border-color: #4AB8C0;
+  width: 100%;
+}
+
+/* En móvil, busca ocupa menos espacio */
+@media (max-width: 480px) {
+  .search-container {
+    display: none; /* o max-width: 150px; */
+  }
+}
 
 /* ============================
 CSS para el login (HTML + CSS)
@@ -194,12 +236,12 @@ color: var(--muted);
   position: absolute;
   top: 10px;
   right: 10px;
-  height: 36px;
-  width: 36px;
+  height: 30px;
+  width: 30px;
   border: 0;
   border-radius: 8px;
   background: transparent;
-  color: #93a4af;
+  color: #174143;
   font-size: 18px;
   cursor: pointer;
 }
@@ -323,13 +365,20 @@ h1 {
 .nav-wrapper {
     display: flex; /* Usamos flexbox para distribuir los elementos */
     align-items: center;
-    justify-content: space-between; /* Espacio entre elementos */
+    justify-content:center; /* Centrado horizontal */
+    padding: 1rem 1rem; /* Espaciado interno */
     max-width: none; /* Cambiado a none para ocupar todo el ancho */
-    margin: 0 auto;
-    margin-left: 0px;
-    margin-right: 0px;
-    gap: 1rem; /* Espacio entre elementos */
+    margin: 0 auto; /* Centrado horizontal */
+    margin-left: 0px; /* Alineación a la izquierda */
+    margin-right: 0px; /* Alineación a la derecha */
+    gap: 0.2rem; /* Espacio entre elementos */
 }
+
+/* Orden: Logo(1) → Menú(2) → Búsqueda(3) → Login(4) */
+.logo-link { order: 1; }
+.nav-links { order: 2; flex: 1; }  /* menú ocupa espacio central */
+.search-container { order: 3; }
+.login { order: 4; }
 
 /* ORDEN EN DESKTOP (NUEVO) */
 .logo-link { order: 1; } /* Logo al inicio */
@@ -345,8 +394,8 @@ h1 {
 }
 
 .logo-link {
-    display: flex;
-    align-items: center;
+    display: flex; /* Usamos flexbox para centrar el contenido */
+    align-items:baseline; /* Centrado vertical */
     border: none;
     padding: 0;
 }
