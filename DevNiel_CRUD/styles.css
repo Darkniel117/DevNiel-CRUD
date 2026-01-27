@@ -40,7 +40,7 @@ body {
 
 #header {
     margin-top: 0; /* Elimina margen superior */
-    height: 4rem; /* Ocupa toda la altura de la ventana */
+    height: 5rem; /* Ocupa toda la altura de la ventana */
     display: flex; /* Usamos flexbox para centrar el contenido */
     flex-direction: column; /* Alineamos los elementos en columna */
     justify-content: center; /* Centramos verticalmente */
@@ -52,10 +52,10 @@ body {
 
 .hero {
   display: flex; /* Usamos flexbox para centrar el contenido */
-  height: 50vw; /* Ajusta la altura según sea necesario */
-  top: 0px;
-  padding-top: 15%;
-  padding-bottom: 20%;
+  height: 48vw; /* Ajusta la altura según sea necesario */
+  top: 6rem; /* Espacio desde la parte superior */
+  padding-top: 10%; /* Ajusta el padding superior */
+  padding-bottom: 10%; /* Ajusta el padding inferior */
   justify-content: center; /* Centramos verticalmente */
   align-items: center; /* Centramos horizontalmente */
 }
@@ -124,8 +124,10 @@ body {
     position:fixed; /* Fijo en la pantalla */
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* Centrado exacto */
 }
+
+
 /* ============================Estilos para la barra de búsqueda====================== */
 .search-container {
   position: relative; /* Para posicionar el icono dentro */
@@ -167,6 +169,7 @@ body {
     display: none; /* o max-width: 150px;
   }
 }
+/* =========================Fin estilos barra de búsqueda====================== */
 
 /* ============================
 CSS para el login (HTML + CSS)
@@ -486,7 +489,7 @@ h1 {
 @media (max-width: 768px) {
   #header {
     margin-top: 0; /* Elimina margen superior */
-    height: 6rem; /* Ocupa toda la altura de la ventana */
+    height: 4rem; /* Ocupa toda la altura de la ventana */
     padding-top: 0%;
     padding-left: 0%;
     padding-right: 0%;
@@ -583,7 +586,7 @@ h1 {
 
   #hero {
     /*background-color: #2AA7A0;*/
-    padding-top: 20%;
+    padding-top: 15%; /* Ajusta el padding superior */
     padding-left: 10%;
     padding-right: 10%;
     padding-bottom: 100%;
@@ -816,8 +819,8 @@ h1 {
 
 /* Fondo decorativo */
 .bg-decoration {
-  position: fixed;
-  top: 0;
+  position:fixed;
+  top: 0; 
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -826,39 +829,52 @@ h1 {
 }
 
 .bg-svg {
-  position: absolute;
+  position: absolute; /* Posiciona el SVG dentro del contenedor */
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
 }
 
 /* Hero section */
 .hero-section {
-  display: flex;
-  flex-direction: column;
-  gap: 5rem;
-  padding: 5rem 1rem;
+  display: flex; /* Contenedor principal */
+  flex-direction: column; /* columna por defecto */
+  gap: 4rem; /* espacio entre contenido e imagen */
+  padding: 5rem 1rem; /* espacio interno */
   align-items: center;
   justify-content: center;
-  margin-top: 6rem; /* espacio para tu navbar fija */
+  margin-top: 10rem; /* espacio para tu navbar fija */
+  margin-bottom: 10rem; /* espacio inferior */
+  margin-left: 3.5rem;
+  margin-right: 3.5rem;
 }
 
 @media (min-width: 768px) {
   .hero-section {
+    display: flex;
     flex-direction: row;
+    gap: 4rem; /* más espacio en pantallas grandes */
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
   }
 }
 
 .hero-content {
-  display: flex;
+  display: flex; /* Contenedor del contenido */
   flex-direction: column;
   align-items: center;
-  max-width: 50%;
+  max-width: 50%; /* limita el ancho del contenido */
+  margin-top: auto; /* centra verticalmente */
+  margin-bottom: auto; /* centra verticalmente */ 
 }
 
 @media (min-width: 768px) {
   .hero-content {
-    align-items: flex-start;
+    align-items: flex-start; /* Alinea a la izquierda en pantallas grandes */
   }
 }
 
@@ -967,13 +983,14 @@ h1 {
 }
 
 .hero-image {
-  max-width: 24rem;
-  flex-shrink: 0;
+  /*max-width: 24rem; /* Tamaño máximo de la imagen */
+  width: 25rem; /* Hace que la imagen sea responsiva */
+  flex-shrink: 0; /* Evita que la imagen se reduzca */
 }
 
 @media (min-width: 1024px) {
   .hero-image {
-    max-width: 28rem;
+    max-width: 25rem; /* Tamaño máximo mayor en pantallas grandes */  
   }
 }
 /*=========================Estilos generales======================*/
