@@ -40,7 +40,7 @@ body {
 
 #header {
     margin-top: 0; /* Elimina margen superior */
-    height: 5rem; /* Ocupa toda la altura de la ventana */
+    height: 4rem; /* Ocupa toda la altura de la ventana */
     display: flex; /* Usamos flexbox para centrar el contenido */
     flex-direction: column; /* Alineamos los elementos en columna */
     justify-content: center; /* Centramos verticalmente */
@@ -53,7 +53,7 @@ body {
 .hero {
   display: flex; /* Usamos flexbox para centrar el contenido */
   height: 48vw; /* Ajusta la altura según sea necesario */
-  top: 6rem; /* Espacio desde la parte superior */
+  top: 4rem; /* Espacio desde la parte superior */
   padding-top: 10%; /* Ajusta el padding superior */
   padding-bottom: 10%; /* Ajusta el padding inferior */
   justify-content: center; /* Centramos verticalmente */
@@ -61,11 +61,11 @@ body {
 }
 
 .audiowide-regular {
-    /* height: 100%;*/
+    height: 100%;
     position: relative; /* Para permitir posicionamiento relativo si es necesario */
     display: inline-block;      /* El recuadro se ajusta al texto */
     font-family: "Audiowide", sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
     
     padding: 0.5rem 2.5rem;                /* Espacio alrededor del texto */
@@ -73,13 +73,14 @@ body {
     border-radius: 30px 0 30px 0;
     border: 4px solid var(--dark);
     
-    font-size: clamp(2.5rem, 6vw, 4.5rem); /* Tamaño de fuente responsivo */
+    font-size: clamp(3rem, 8vw, 6rem); /* Tamaño de fuente responsivo */
     font-style: normal;
     color: var(--dark);
-    letter-spacing: 0.6rem;
+    letter-spacing: 1rem;
     text-transform: uppercase;
     margin: 0;
 }
+
 
 .login {
     margin: 7px;
@@ -911,13 +912,21 @@ h1 {
 }
 
 .hero-title {
-  text-align: center;
-  font-size: 3rem;
-  line-height: 4.25rem;
-  font-weight: 500;
-  max-width: 32rem;
-  color: #f8fafc;
-  margin: 1rem 0;
+  font-family: "Noto Sans", sans-serif;
+  background-image: url(/DevNiel_CRUD/img/Software.jpg);
+  font-size: clamp(3rem, 9vw, 6rem); /* Tamaño responsivo */
+  line-height: clamp(4rem, 20vw, 10rem);
+  font-weight: 1000;
+  background-size: cover;
+  background-clip: text;
+  color: transparent;
+  animation: animate 20s linear infinite;
+}
+
+@keyframes animate { /* Animación de desplazamiento del fondo */
+  to {
+    background-position-x: -500px; 
+  }
 }
 
 @media (min-width: 768px) {
@@ -931,6 +940,7 @@ h1 {
 .hero-subtitle {
   text-align: center;
   font-size: 0.875rem;
+  line-height: 1.625rem;
   color: #e2e8f0;
   max-width: 32rem;
   margin: 0.5rem 0 2rem 0;

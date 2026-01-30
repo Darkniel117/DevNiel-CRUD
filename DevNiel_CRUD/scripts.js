@@ -47,10 +47,12 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', () => {
   const trigger  = document.getElementById('loginImage');       // icono de perfil
   const modal    = document.getElementById('loginForm');         // contenedor modal
-  const overlay  = document.getElementById('overlay') || document.querySelector('.overlay');
+  const overlay  = document.getElementById('overlay') || document.querySelector('.overlay'); // fondo oscuro
   const panel    = modal?.querySelector('.card');                // panel interno
 
-  if (!trigger || !modal || !overlay || !panel) return;
+  if (!trigger || !modal || !overlay || !panel) return; // elementos necesarios
+
+  // Estado y funciones de apertura/cierre
 
   let lastFocus = null;
   let openedAt = 0; // guard temporal para evitar cerrar por el mismo clic de apertura
@@ -69,8 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // registrar fuera en el siguiente tick para no capturar el clic que abrió
     setTimeout(() => {
-      document.addEventListener('pointerdown', onPointerDown, true);
-      document.addEventListener('keydown', onKeyDown);
+      document.addEventListener('pointerdown', onPointerDown, true); // captura
+      document.addEventListener('keydown', onKeyDown); // para Escape y tabulación
     }, 0);
   }
 
