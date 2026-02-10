@@ -21,14 +21,10 @@
     box-sizing: border-box; /* Incluye el padding y border en el tamaño total */
 }
 
-
-html {
-    scroll-behavior: smooth; /* Suaviza el scroll al navegar por anclas */
-}
-
 [hidden] { display: none !important; }
 
-body {
+html, body {
+    scroll-behavior: smooth; /* Suaviza el scroll al navegar por anclas */
     font-family: sans-serif;
     background: linear-gradient(to right, var(--bg1), var(--bg2), var(--bg1));
     color: var(--text);
@@ -36,6 +32,15 @@ body {
     border-width: 2px;
     min-height: 100vh;
     margin: 0;
+    padding: 0%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el cuerpo ocupe al menos toda la altura de la ventana */
 }
 
 #header {
@@ -52,11 +57,11 @@ body {
 
 .hero {
   display: flex; /* Usamos flexbox para centrar el contenido */
-  height: 48vw; /* Ajusta la altura según sea necesario */
+  height: max-content; /* Asegura que ocupe al menos la altura de la ventana */
   top: 4rem; /* Espacio desde la parte superior */
-  padding-top: 10%; /* Ajusta el padding superior */
-  padding-bottom: 10%; /* Ajusta el padding inferior */
-  justify-content: center; /* Centramos verticalmente */
+  /*padding-top: 10%; /* Ajusta el padding superior */
+  /*padding-bottom: 10%; /* Ajusta el padding inferior */
+  justify-content: space-around; /* Centramos verticalmente */
   align-items: center; /* Centramos horizontalmente */
 }
 
@@ -80,7 +85,6 @@ body {
     text-transform: uppercase;
     margin: 0;
 }
-
 
 .login {
     margin: 7px;
@@ -838,16 +842,26 @@ h1 {
 
 /* Hero section */
 .hero-section {
-  display: flex; /* Contenedor principal */
-  flex-direction: column; /* columna por defecto */
-  gap: 4rem; /* espacio entre contenido e imagen */
-  padding: 5rem 1rem; /* espacio interno */
+  flex: 2;  /* NUEVO: ocupa todo el espacio disponible */
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;  /* NUEVO: centra VERTICALMENTE */
+  min-height: calc(100vh - 8rem); /* Asegura que ocupe al menos la altura de la ventana menos el header */
+  padding: clamp(2rem, 5vw, 6rem);  /* Padding responsivo */
+  padding-top: 80px;
+  margin-top: 0;  /* Quita el margin-top fijo */
+  box-sizing: border-box; /* Asegura que el padding no aumente el tamaño total */
+  /*display: flex; /* Contenedor principal */
+  /*flex-direction: row; /* columna por defecto */
+  /*gap: 4rem; /* espacio entre contenido e imagen */
+  /*padding: 5rem 1rem; /* espacio interno */
+  /*align-items: center;
   justify-content: center;
   margin-top: 10rem; /* espacio para tu navbar fija */
-  margin-bottom: 10rem; /* espacio inferior */
-  margin-left: 3.5rem;
-  margin-right: 3.5rem;
+  /*margin-bottom: 10rem; /* espacio inferior */
+  /*margin-left: 3.5rem;
+  margin-right: 3.5rem; */
 }
 
 @media (min-width: 768px) {
@@ -856,26 +870,37 @@ h1 {
     flex-direction: row;
     gap: 4rem; /* más espacio en pantallas grandes */
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 6rem;
     margin-bottom: 6rem;
     margin-left: 6rem;
     margin-right: 6rem;
+    padding-top: 80px;
+    min-height: calc(100vh - 80px);
   }
 }
 
 .hero-content {
-  display: flex; /* Contenedor del contenido */
+  display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  max-width: 100%;
+  gap: 1.5rem;
+  /*display: flex; /* Contenedor del contenido */
+  /*flex-direction: column;
+  align-items: center;
   max-width: 50%; /* limita el ancho del contenido */
-  margin-top: auto; /* centra verticalmente */
-  margin-bottom: auto; /* centra verticalmente */ 
+  /*margin-top: auto; /* centra verticalmente */
+  /*margin-bottom: auto; /* centra verticalmente */ 
 }
 
 @media (min-width: 768px) {
   .hero-content {
-    align-items: flex-start; /* Alinea a la izquierda en pantallas grandes */
+    align-items: flex-start;
+    text-align: left;
+    max-width: 50%;
+    /*align-items: flex-start; /* Alinea a la izquierda en pantallas grandes */
   }
 }
 
@@ -916,7 +941,8 @@ h1 {
   background-image: url(/DevNiel_CRUD/img/Software.jpg);
   font-size: clamp(3rem, 9vw, 6rem); /* Tamaño responsivo */
   line-height: clamp(4rem, 20vw, 10rem);
-  font-weight: 1000;
+  font-weight: 500;
+  margin: 0;
   background-size: cover;
   background-clip: text;
   color: transparent;
@@ -994,8 +1020,13 @@ h1 {
 
 .hero-image {
   /*max-width: 24rem; /* Tamaño máximo de la imagen */
+  display: inline; /* Asegura que la imagen se comporte como bloque */
+  user-select: none; /* Evita que la imagen sea seleccionable */
   width: 25rem; /* Hace que la imagen sea responsiva */
   flex-shrink: 0; /* Evita que la imagen se reduzca */
+  border-radius: 6% 6%;
+  border-color: #ffffff;
+  border-style: double;
 }
 
 @media (min-width: 1024px) {
@@ -1005,7 +1036,7 @@ h1 {
 }
 /*=========================Estilos generales======================*/
 
-.sticky {
+.tabs-container {
     position: fixed; /* Fija la barra en la parte superior */
     top: 0;
 }
