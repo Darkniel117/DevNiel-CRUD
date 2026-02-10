@@ -606,6 +606,10 @@ h1 {
     transform: rotate(-45deg) translate(7px, -7px); /* Ajusta la traslación según sea necesario */
   }
 
+  .search-container {
+    display: none !important; /* Oculta la búsqueda en móviles */
+  }
+
   .hero .audiowide-regular { 
     display: flex; /* Oculta el título grande en móviles */
     position:absolute;
