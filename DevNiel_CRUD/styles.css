@@ -1,6 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap');
+/* Consolidad imports de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&family=Mulish&display=swap');
 
 :root { /* Variables CSS para colores y estilos reutilizables */
     --header-h-desktop: 50px; /* ej.: 64-80px es común */
@@ -23,8 +22,22 @@
 
 [hidden] { display: none !important; }
 
+/* Focus visible para accesibilidad */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 html, body {
-    scroll-behavior: smooth; /* Suaviza el scroll al navegar por anclas */
+    scroll-behavior: smooth;
     font-family: sans-serif;
     background: linear-gradient(to right, var(--bg1), var(--bg2), var(--bg1));
     color: var(--text);
@@ -35,6 +48,21 @@ html, body {
     padding: 0%;
     height: 100%;
     overflow-x: hidden;
+}
+
+/* Respetar preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  html, body {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 body {
@@ -589,14 +617,6 @@ h1 {
     /*min-height: 0vh; /* Asegura que ocupe al menos la altura de la ventana */
   }
 
-  #hero {
-    /*background-color: #2AA7A0;*/
-    padding-top: 15%; /* Ajusta el padding superior */
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-bottom: 100%;
-    min-height: 3.3rem; /* Oculta el contenedor hero en tablets */
-  }
 
   /* Menú debajo: oculto por defecto */
   .nav-links {
@@ -768,14 +788,6 @@ h1 {
     /*min-height: 0vh; /* Asegura que ocupe al menos la altura de la ventana */
   }
 
-  #hero {
-    /*background-color: #2AA7A0;*/
-    padding-top: 20%;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-bottom: 100%;
-    min-height: 5rem; /* Oculta el contenedor hero en tablets */
-  }
 
   /* Menú debajo: oculto por defecto */
   .nav-links {
@@ -939,19 +951,23 @@ h1 {
 .hero-title {
   font-family: "Noto Sans", sans-serif;
   background-image: url(/DevNiel_CRUD/img/Software.jpg);
-  font-size: clamp(3rem, 9vw, 6rem); /* Tamaño responsivo */
-  line-height: clamp(4rem, 20vw, 10rem);
-  font-weight: 500;
-  margin: 0;
   background-size: cover;
+  background-position: 0 0;
   background-clip: text;
   color: transparent;
-  animation: animate 20s linear infinite;
+  font-weight: 500;
+  margin: 0;
+  animation: animateBackground 20s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-@keyframes animate { /* Animación de desplazamiento del fondo */
+@keyframes animateBackground {
+  from {
+    background-position-x: 0;
+  }
   to {
-    background-position-x: -500px; 
+    background-position-x: -500px;
   }
 }
 
