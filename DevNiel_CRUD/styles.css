@@ -783,7 +783,7 @@ h1 {
   .hero .audiowide-regular { 
     /*position:absolute;*/
     display:flex; /* Oculta el título grande en móviles */
-    position: absolute;
+    position: absolute; /* Posición absoluta para centrar en la pantalla */
     top: 50%; /* Centrado vertical */
     left: 50%; /* Centrado horizontal */
     transform: translate(-50%, -50%); /* Ajuste para centrar exactamente */
@@ -834,6 +834,7 @@ h1 {
     font-size: clamp(1rem, 3vw, 2em); /* Tamaño de fuente responsivo */
   }
 }
+
 /* =========================Fin estilos barra de navegación====================== */
 
 /* =========================Estilos para la sección Hero====================== */
@@ -858,26 +859,17 @@ h1 {
 
 /* Hero section */
 .hero-section {
-  flex: 2;  /* NUEVO: ocupa todo el espacio disponible */
+  flex: 2;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* por defecto en columnas (móvil) */
   align-items: center;
-  justify-content: center;  /* NUEVO: centra VERTICALMENTE */
-  min-height: calc(100vh - 8rem); /* Asegura que ocupe al menos la altura de la ventana menos el header */
-  padding: clamp(2rem, 5vw, 6rem);  /* Padding responsivo */
-  padding-top: 80px;
-  margin-top: 0;  /* Quita el margin-top fijo */
-  box-sizing: border-box; /* Asegura que el padding no aumente el tamaño total */
-  /*display: flex; /* Contenedor principal */
-  /*flex-direction: row; /* columna por defecto */
-  /*gap: 4rem; /* espacio entre contenido e imagen */
-  /*padding: 5rem 1rem; /* espacio interno */
-  /*align-items: center;
   justify-content: center;
-  margin-top: 10rem; /* espacio para tu navbar fija */
-  /*margin-bottom: 10rem; /* espacio inferior */
-  /*margin-left: 3.5rem;
-  margin-right: 3.5rem; */
+  min-height: calc(100vh - 8rem);
+  padding: clamp(1.5rem, 4vw, 4rem);
+  padding-top: 6rem;
+  margin-top: 0;
+  gap: 2rem; /* separación entre contenido e imagen */
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
@@ -901,14 +893,10 @@ h1 {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 100%;
+  width: 100%;
+  max-width: 900px; /* evita que el contenido sea excesivamente ancho en móviles grandes */
   gap: 1.5rem;
-  /*display: flex; /* Contenedor del contenido */
-  /*flex-direction: column;
-  align-items: center;
-  max-width: 50%; /* limita el ancho del contenido */
-  /*margin-top: auto; /* centra verticalmente */
-  /*margin-bottom: auto; /* centra verticalmente */ 
+  padding-inline: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -954,16 +942,12 @@ h1 {
 
 .hero-title {
   font-family: "Noto Sans", sans-serif;
-  background-image: url(/DevNiel_CRUD/img/Software.jpg);
+  font-size: clamp(2rem, 6vw, 4em);
+  background-image: url("/DevNiel_CRUD/img/Software.jpg"); 
   background-size: cover;
-  background-position: 0 0;
   background-clip: text;
   color: transparent;
-  font-weight: 500;
-  margin: 0;
-  animation: animateBackground 20s linear infinite;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  animation: animateBackground 20s linear infinite; 
 }
 
 @keyframes animateBackground {
@@ -975,10 +959,10 @@ h1 {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) { 
   .hero-title {
     text-align: left;
-    font-size: 3.75rem;
+    font-size: clamp(3rem, 8vw, 5.25rem);
     line-height: 5.25rem;
   }
 }
@@ -995,6 +979,7 @@ h1 {
 @media (min-width: 768px) {
   .hero-subtitle {
     text-align: left;
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
   }
 }
 
@@ -1039,19 +1024,61 @@ h1 {
 }
 
 .hero-image {
-  /*max-width: 24rem; /* Tamaño máximo de la imagen */
-  display: inline; /* Asegura que la imagen se comporte como bloque */
-  user-select: none; /* Evita que la imagen sea seleccionable */
-  width: 25rem; /* Hace que la imagen sea responsiva */
-  flex-shrink: 0; /* Evita que la imagen se reduzca */
+  display: block;
+  user-select: none;
+  width: 100%;           /* ocupa todo el ancho del contenedor en móvil (stack) */
+  max-width: 20rem;     /* limita el ancho en pantallas grandes */
+  height: auto;
+  object-fit: cover;
+  flex-shrink: 0;
   border-radius: 6% 6%;
   border-color: #ffffff;
   border-style: double;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
+  .hero-section {
+    display: flex;
+    flex-direction: row; /* en pantallas >=768px mostrar en fila */
+    gap: 4rem;
+    align-items: center;
+    justify-content: space-between;
+    margin: 6rem;
+    padding-top: 80px;
+    min-height: calc(100vh - 80px);
+  }
+
+  .hero-content {
+    align-items: flex-start;
+    text-align: left;
+    max-width: 50%;
+    padding-inline: 0;
+  }
+
+  .hero-image {  width: 100%;
+    max-width: 40rem; /* imagen más grande en desktop */
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  /* fuerza layout en columna y ajusta tamaños para móviles pequeños */
+  .hero-section {
+    padding: clamp(1rem, 4vw, 2rem);
+    padding-top: 5rem;
+    gap: 1.25rem;
+  }
+
+  .hero-content {
+    padding-inline: 0.75rem;
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
   .hero-image {
-    max-width: 25rem; /* Tamaño máximo mayor en pantallas grandes */  
+    max-width: 100%;
+    border-radius: 6% 6%;
   }
 }
 /*=========================Estilos generales======================*/
