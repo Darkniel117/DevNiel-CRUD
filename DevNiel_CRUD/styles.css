@@ -962,7 +962,7 @@ h1 {
 @media (min-width: 768px) { 
   .hero-title {
     text-align: left;
-    font-size: clamp(3rem, 8vw, 5.25rem);
+    font-size: clamp(3rem, 4vw, 4.25rem);
     line-height: 5.25rem;
   }
 }
@@ -1024,16 +1024,13 @@ h1 {
 }
 
 .hero-image {
-  display: block;
-  user-select: none;
-  width: 100%;           /* ocupa todo el ancho del contenedor en móvil (stack) */
-  max-width: 20rem;     /* limita el ancho en pantallas grandes */
+  display:flex; /* Asegura que la imagen se comporte como bloque para evitar espacios debajo */
+  user-select: none; /* Evita que la imagen sea seleccionable */
+  width: 70%;           /* ocupa todo el ancho del contenedor en móvil (stack) */
+  max-width: 5rem;     /* limita el ancho en pantallas grandes */
   height: auto;
-  object-fit: cover;
-  flex-shrink: 0;
-  border-radius: 6% 6%;
-  border-color: #ffffff;
-  border-style: double;
+  object-fit:contain; /* Asegura que la imagen mantenga su proporción y cubra el área asignada */
+  flex-shrink: 0; /* Evita que la imagen se reduzca en pantallas grandes */
 }
 
 @media (min-width: 768px) {
@@ -1056,7 +1053,7 @@ h1 {
   }
 
   .hero-image {  width: 100%;
-    max-width: 40rem; /* imagen más grande en desktop */
+    max-width: 30rem; /* imagen más grande en desktop */
     flex: 1;
   }
 }
@@ -1076,9 +1073,9 @@ h1 {
     text-align: center;
   }
 
-  .hero-image {
-    max-width: 100%;
-    border-radius: 6% 6%;
+  .hero-image { width: 100%;
+    max-width: 50rem;
+    flex: 2; /* permite que la imagen ocupe todo el ancho disponible en móviles pequeños */
   }
 }
 /*=========================Estilos generales======================*/
